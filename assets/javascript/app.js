@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     $(document).on("click", ".animals", function () {
         var animals = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=4aCPsmsCn0T77A2YUnVUvvAFYd6t9it8&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=A0vtqtIBXt3cOiYglkDgMhM99rSab4wZ&limit=10";
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -50,8 +50,24 @@ $(document).ready(function () {
                 animalDiv.append(p);
                 animalDiv.append(animalImage);
                 $("#gifs-appear-here").append(animalDiv);
+
       }
       
         })
+    });
+
+    $(document).on("click", ".animal-image", function () {
+        console.log("Clicked the image to animate!");
+        //GIF IMAGE STATE 
+        var state = $(this).attr("data-state");
+        console.log(state);
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        }
+        else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
     });
 });
