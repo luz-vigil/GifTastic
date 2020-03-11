@@ -7,18 +7,22 @@
 </head>
 
 <body>
+  <div id="gif-buttons"></div>
+  <div id="addAnimal">
+    <form id="animal-id" class="card-body">
+      <label for="animalSearch">Add an animal!</label>
+      <input type="text" id="animalSearch"><br />
+      <button id="find-animals" class="btn-success m-2" value="Submit">Submit</button>
+  </form>
+  </div>
+  <!-- Div that displays all gif images  -->
+  <div id="gifs-appear-here">
+  </div>
+  
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    // Example queryURL for Giphy API
-    var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response);
-    });
-  </script>
+  <script type="text/javascript" src="assets/javascript/app.js"> </script>
+  
 
 </body>
 
