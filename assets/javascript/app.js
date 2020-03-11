@@ -1,14 +1,14 @@
 $(document).ready(function () {
-    var newAnimals= ["panda", "leopard"]
-    
-    function renderButtons(){
+    var newAnimals = ["panda", "leopard", "owl", "whale", "dolphin", "bear", "parrot", "dog", "cat", "deer", "monkey", "fox", "tiger", "lion", "pig", "duck", "rabbit", "elephant", "horse"]
+
+    function renderButtons() {
         $("#gif-buttons").empty()
 
         // Loop through the array of animals, then generate buttons for each animal in the array
-        for(var i=0; i< newAnimals.length; i++){
-            var gifButton =  $("<button>")
-           
-        //its helpful when we use event listeners
+        for (var i = 0; i < newAnimals.length; i++) {
+            var gifButton = $("<button>")
+
+            //its helpful when we use event listeners
             gifButton.addClass("animals");
             gifButton.attr("data-name", newAnimals[i]);
             gifButton.text(newAnimals[i]);
@@ -26,6 +26,8 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".animals", function () {
+        //CLEAR OUT THE previous results 
+        $("#gifs-appear-here").empty();
         var animals = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=A0vtqtIBXt3cOiYglkDgMhM99rSab4wZ&limit=10";
         $.ajax({
@@ -39,6 +41,7 @@ $(document).ready(function () {
                 var animalDiv = $("<div class=\"animal-item\">");
                 var rating = results[i].rating;
                 var p = $("<p>").text("Rating: " + rating);
+                p.append("<br/> <h3>Title: " + results[i].title +"</h3>");
                 var animated = results[i].images.fixed_height.url;
                 var still = results[i].images.fixed_height_still.url;
                 var animalImage = $("<img>");
@@ -51,8 +54,8 @@ $(document).ready(function () {
                 animalDiv.append(animalImage);
                 $("#gifs-appear-here").append(animalDiv);
 
-      }
-      
+            }
+
         })
     });
 
