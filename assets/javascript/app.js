@@ -1,17 +1,17 @@
 $(document).ready(function () {
-    var newAnimals = ["panda", "leopard", "owl", "whale", "dolphin", "bear", "parrot", "dog", "cat", "deer", "monkey", "fox", "tiger", "lion", "pig", "duck", "rabbit", "elephant", "horse"]
+    var newAnimalsList = ["panda", "leopard", "owl", "whale", "lion", "elephant", "horse"]
 
     function renderButtons() {
         $("#gif-buttons").empty()
 
         // Loop through the array of animals, then generate buttons for each animal in the array
-        for (var i = 0; i < newAnimals.length; i++) {
+        for (var i = 0; i < newAnimalsList.length; i++) {
             var gifButton = $("<button>")
 
             //its helpful when we use event listeners
             gifButton.addClass("animals");
-            gifButton.attr("data-name", newAnimals[i]);
-            gifButton.text(newAnimals[i]);
+            gifButton.attr("data-name", newAnimalsList[i]);
+            gifButton.text(newAnimalsList[i]);
             $("#gif-buttons").append(gifButton)
         }
 
@@ -20,8 +20,10 @@ $(document).ready(function () {
 
     $(document).on("click", "#find-animals", function (event) {
         event.preventDefault();
+        console.log("add button click")
         var newAnimals = $("#animalSearch").val().trim();
-        animals.push(newAnimals);
+        newAnimalsList.push(newAnimals);
+        console.log(newAnimals)
         renderButtons();
     });
 
